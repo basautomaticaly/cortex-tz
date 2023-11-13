@@ -1,0 +1,35 @@
+{% extends 'position/base.html' %}
+
+{% block content %}
+<body>
+    <div class="container">
+        <h2>Список должностей</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Должность</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for position in positions %}
+                <tr>
+                    <td>{{ position.job_title }}</td>
+                    <td>
+                        <!-- Ссылки для действий (редактировать, удалить) -->
+                        <a href="{% url 'employees:edit_position' position.id %}">Редактировать</a> |
+                        <a href="{% url 'employees:delete_position' position.id %}">Удалить</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="{% url 'index' %}" class="btn btn-primary menu-button">Меню</a>
+        <a href="{% url 'employees:add_position' %}" class="btn btn-primary">Добавить должность</a>
+    </div>
+    <!-- Подключение JavaScript (например, для Bootstrap) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+{% endblock %}
