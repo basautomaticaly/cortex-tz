@@ -24,7 +24,6 @@
                     <td>{{ employee.position.job_title }}</td>
                     <td>{{ employee.invite_date }}</td>
                     <td>
-                        <!-- Ссылки для действий (редактировать, удалить) -->
                         <a href="{% url 'employees:edit_employee' employee.id %}">Редактировать</a> |
                         <a href="{% url 'employees:delete_employee' employee.id %}">Удалить</a>
                     </td>
@@ -35,7 +34,6 @@
         <a href="{% url 'index' %}" class="btn btn-primary menu-button">Меню</a>
         <a href="{% url 'employees:add_employee' %}" class="btn btn-primary">Добавить сотрудника</a>
     </div>
-    <!-- Подключение JavaScript (например, для Bootstrap) -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
