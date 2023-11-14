@@ -1,3 +1,4 @@
+from django.core.validators import RegexValidator
 from django.db import models
 
 
@@ -9,9 +10,10 @@ class Position(models.Model):
 
 
 class Employee(models.Model):
-    last_name = models.CharField(max_length=100)
-    first_name = models.CharField(max_length=100)
-    middle_name = models.CharField(max_length=100)
+    name_regex = RegexValidator(regex=r'^[а-яА-Яa-zA-Z]+$', message="ФИО должно содержать только буквы.")
+    last_name = models.CharField(max_length=100, validators=[name_regex])
+    first_name = models.CharField(max_length=100, validators=[name_regex])
+    middle_name = models.CharField(max_length=100, validators=[name_regex])
     position = models.ForeignKey(Position, on_delete=models.CASCADE)
     invite_date = models.DateField()
 
