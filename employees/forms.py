@@ -10,7 +10,10 @@ class EmployeeForm(forms.ModelForm):
     middle_name = forms.CharField(label='Отчество',
                                   widget=forms.TextInput(attrs={'placeholder': 'Введите отчество'}))
     position = forms.ModelChoiceField(label='Должность', queryset=Position.objects.all())
-    invite_date = forms.DateField(label='Дата приема на работу')
+    invite_date = forms.DateField(
+        label='Дата приема на работу',
+        widget=forms.SelectDateWidget(years=range(1900, 2100))
+    )
 
     class Meta:
         model = Employee
